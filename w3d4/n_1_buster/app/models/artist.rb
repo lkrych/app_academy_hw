@@ -17,6 +17,9 @@ class Artist < ActiveRecord::Base
   end
 
   def better_tracks_query
-    # TODO: your code here
+    tracks_count = {}
+    albums = self.albums.includes(:tracks)
+    albums.select("title, COUNT(tracks)").group_by(:title).to_h
+
   end
 end
