@@ -8,53 +8,16 @@
 
 require_relative './sqlzoo.rb'
 
-def example_select
-  execute(<<-SQL)
-    SELECT
-      yr,
-      subject,
-      winner
-    FROM
-      nobels
-    WHERE
-      yr = 1960
-  SQL
-end
 
 def prizes_from_1950
   # Display Nobel prizes for 1950.
   execute(<<-SQL)
-    SELECT
-      *
-    FROM
-      nobels
-    WHERE
-      yr = 1950
-  SQL
-end
-
-def literature_1962
-  # Show who won the 1962 prize for Literature.
-  execute(<<-SQL)
-    SELECT
-      winner
-    FROM
-      nobels
-    WHERE
-      subject = 'Literature'
-      AND yr = 1962
-  SQL
-end
-
-def einstein_prize
-  # Show the year and subject that won 'Albert Einstein' his prize.
-  execute(<<-SQL)
-    SELECT
-      yr, subject
-    FROM
-      nobels
-    WHERE
-      winner = 'Albert Einstein'
+  SELECT
+    *
+  FROM
+    nobels
+  WHERE
+    yr = 1950
   SQL
 end
 
@@ -66,8 +29,8 @@ def millennial_peace_prizes
     FROM
       nobels
     WHERE
+      yr >= 2000 AND
       subject = 'Peace'
-      AND yr BETWEEN 2000 AND 2016
   SQL
 end
 
@@ -80,8 +43,8 @@ def eighties_literature
     FROM
       nobels
     WHERE
-      subject = 'Literature'
-      AND yr BETWEEN 1980 AND 1989
+      subject = 'Literature' AND
+      yr BETWEEN 1980 AND 1989
   SQL
 end
 
@@ -94,7 +57,7 @@ def presidential_prizes
     FROM
       nobels
     WHERE
-      winner IN ('Theodore Roosevelt', 'Woodrow Wilson', 'Jimmy Carter', 'Barack Obama')
+      winner IN ('Theodore Roosevelt', 'Woodrow Wilson', 'Jimmy Carter')
   SQL
 end
 
@@ -107,6 +70,5 @@ def nobel_johns
       nobels
     WHERE
       winner LIKE 'John%'
-
   SQL
 end

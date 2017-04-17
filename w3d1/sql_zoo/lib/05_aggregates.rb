@@ -10,22 +10,15 @@
 
 require_relative './sqlzoo.rb'
 
-def example_sum
-  execute(<<-SQL)
-    SELECT
-      SUM(population)
-    FROM
-      countries
-  SQL
-end
-
 def continents
   # List all the continents - just once each.
   execute(<<-SQL)
-    SELECT DISTINCT
+    SELECT
       continent
     FROM
       countries
+    GROUP BY
+      continent
   SQL
 end
 
@@ -61,7 +54,7 @@ def group_population
     FROM
       countries
     WHERE
-      name in ('France', 'Germany', 'Spain')
+      name IN ('France', 'Germany', 'Spain')
   SQL
 end
 
@@ -69,16 +62,9 @@ def country_counts
   # For each continent show the continent and number of countries.
   execute(<<-SQL)
     SELECT
-      continent, COUNT(name) AS number_of_countries
+      continent, COUNT(name)
     FROM
       countries
-    WHERE
-      name in (
-        SELECT
-          name
-        FROM
-          countries
-      )
     GROUP BY
       continent
   SQL
@@ -89,26 +75,27 @@ def populous_country_counts
   # populations of at least 10 million.
   execute(<<-SQL)
     SELECT
-      continent, COUNT(name) as num_countries_w_pop_greater_than_10million
+      continent, COUNT(name)
     FROM
       countries
     WHERE
       population >= 10000000
     GROUP BY
       continent
+
   SQL
 end
 
 def populous_continents
   # List the continents that have a total population of at least 100 million.
   execute(<<-SQL)
-  SELECT
-    continent
-  FROM
-    countries
-  GROUP BY
-    continent
-  HAVING
-    SUM(population) > 100000000
+    SELECT
+      continent
+    FROM
+      countries
+    GROUP BY
+      continent
+    HAVING
+      sum(population) > 100000000
   SQL
 end

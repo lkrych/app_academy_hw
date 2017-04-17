@@ -19,11 +19,11 @@ def null_dept
   # List the teachers who have NULL for their department.
   execute(<<-SQL)
     SELECT
-      name
+      teachers.name
     FROM
       teachers
     WHERE
-      dept_id IS NULL
+      teachers.dept_id IS NULL
   SQL
 end
 
@@ -35,8 +35,8 @@ def all_teachers_join
       teachers.name, depts.name
     FROM
       teachers
-    LEFT JOIN
-      depts on depts.id = teachers.dept_id
+    LEFT JOIN depts
+      ON teachers.dept_id = depts.id
   SQL
 end
 
@@ -49,8 +49,8 @@ def all_depts_join
       teachers.name, depts.name
     FROM
       depts
-    LEFT JOIN
-      teachers on depts.id = teachers.dept_id
+    LEFT JOIN teachers
+      ON teachers.dept_id = depts.id
   SQL
 end
 
@@ -59,11 +59,11 @@ def teachers_and_mobiles
   # 444 2266' if no number is given. Show teacher name and mobile
   # #number or '07986 444 2266'
   execute(<<-SQL)
-    SELECT
-      name, COALESCE(mobile,'07986 444 2266')
+  SELECT
+      teachers.name,
+      COALESCE(teachers.mobile, '07986 444 2266')
     FROM
-      teachers
-
+      teachers;
   SQL
 end
 
@@ -77,7 +77,7 @@ def teachers_and_depts
     FROM
       teachers
     LEFT JOIN
-      depts on depts.id = teachers.dept_id
+      depts ON teachers.dept_id = depts.id
   SQL
 end
 
@@ -101,18 +101,27 @@ def dept_staff_counts
     SELECT
       depts.name, COUNT(teachers.name)
     FROM
-      teachers
-    JOIN
-      depts on depts.id = teachers.dept_id
+      depts
+    LEFT OUTER JOIN
+      teachers ON teachers.dept_id = depts.id
     GROUP BY
       depts.name
   SQL
+
 end
 
 def teachers_and_divisions
   # Use CASE to show the name of each teacher followed by 'Sci' if
   # the the teacher is in dept 1 or 2 and 'Art' otherwise.
   execute(<<-SQL)
+    SELECT
+      teachers.name,
+      CASE
+        WHEN teachers.dept_id IN (1,2) THEN 'Sci'
+        ELSE 'Art'
+      END AS dept_name
+    FROM
+      teachers
   SQL
 end
 
