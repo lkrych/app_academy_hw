@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def new
     if current_user
-      redirect_to cats_url
+      redirect_to user_url(current_user)
     else
       render :new
     end

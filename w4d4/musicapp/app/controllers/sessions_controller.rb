@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   def new
     if current_user
-      redirect_to cats_url
+      redirect_to user_url(current_user)
     else
       render :new
     end
@@ -9,8 +9,8 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by_credentials(params[:user][:email], params[:user][:password])
-    return nil if @user.nil?
-    if @user.valid?
+
+    if @user
       log_in!(@user)
       redirect_to user_url(@user)
     else
