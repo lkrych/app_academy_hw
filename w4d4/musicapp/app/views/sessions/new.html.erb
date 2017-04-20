@@ -1,0 +1,10 @@
+<h1>Log in to the music app!</h1>
+
+<form  action=" <%= sessions_url %>" method="post">
+
+  <label for="email">E-mail:</label>
+  <input id = "email" type="text" name="user[email]" value="">
+  <label for="password">Password:</label>
+  <input id = "password" type="text" name="user[password]" value="">
+  <input type="submit" value="Log in!">
+</form>
