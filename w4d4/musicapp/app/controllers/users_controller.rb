@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
     if @user.valid?
       @user.save!
-      login!(@user)
+      log_in!(@user)
       redirect_to user_url(@user)
     else
       render :new

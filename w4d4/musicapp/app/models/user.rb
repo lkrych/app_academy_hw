@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  attr_reader :password
+
   validates :email,  presence: true
   validates :password_digest, presence: { message: 'Password can\'t be blank'}
   validates :password, length: { minimum: 6, allow_nil: true}
@@ -26,7 +28,7 @@ class User < ActiveRecord::Base
   end
 
   def password=(password)
-    self.digest_password = BCrypt::Password.create(password)
+    self.password_digest = BCrypt::Password.create(password)
   end
 
   def is_password?(password)
