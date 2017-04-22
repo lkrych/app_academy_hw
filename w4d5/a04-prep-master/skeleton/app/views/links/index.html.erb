@@ -1,6 +1,6 @@
-<h1> Welcome to <%=current_user.username %>'s link page </h1>
+<h1><%=current_user.username %></h1>
 
-<% @links.each do |link| %>
+ <% @links.each do |link|%>
   <%= link_to link.title, link_url(link) %>
 <% end %>
 
