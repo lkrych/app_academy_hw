@@ -1,52 +1,46 @@
 class LinksController < ApplicationController
-
+  before_filter :enforce_logged_in
   def index
     @links = Link.all
   end
 
   def new
-    if logged_in?
-      render :new
-    else
-      redirect_to new_session_url
-    end
+    render :new
   end
 
   def create
-    if logged_in?
-      link = Link.new(link_params)
-      if link.valid?
-        link.save!
-        redirect_to link_url(link.id)
-      else
-        flash[:errors] = "Please try again, your entry was invalid"
-        render new_session_url
-      end
+    link = Link.new(link_params)
+    link.user_id = current_user.id
+    if link.valid?
+      link.save!
+      redirect_to link_url(link)
     else
-      redirect_to new_session_url
+      flash[:errors] = "Url can't be blank"
+      render :new
     end
   end
 
   def show
-    if logged_in?
-      @link = Link.find(params[:id])
-      render :show
-    else
-      redirect_to new_session_url
-    end
+    @link = Link.find(params[:id])
+    @comments = @link.comments
+    render :show
   end
 
   def update
-    if logged_in?
-      render :edit
+    link = Link.new(link_params)
+    link.user_id = current_user.id
+    if link.valid?
+      link.save!
+      redirect_to link_url(link)
     else
-      redirect_to new_session_url
+      flash[:errors] = "Please re-enter your link info. They were invalid"
+      render :new
     end
   end
 
   private
 
   def link_params
-    params.require(:link).permit(:title, :url, :user, :user_id, :comment)
+    params.require(:link).permit(:title, :url)
   end
 end

@@ -1,18 +1,14 @@
-<h1>Create a new link!</h1>
+<h1>Create New Link</h1>
 
-<form  action="<%=links_url%>" method="post">
-  <%=auth_token %>
-  <label for="title">Title: </label>
-  <input id = "title" type="text" name="link[title]" value="">
+<form  action="<%= links_url %>" method="post">
+ <%= auth_token %>
 
-  <label for="url">URL: </label>
-  <input id = "url" type="text" name="link[url]" value="">
+ <label for="title">Title: </label>
+ <input id= "title" type="text" name="link[title]" value="">
 
-  <label for="user">User: </label>
-  <input id = "user" type="text" name="link[user]" value="">
+ <label for="url">URL: </label>
+ <input id= "url" type="text" name="link[url]" value="">
 
-  <label for="comment">Comment: </label>
-  <input id = "comment" type="text" name="link[comment]" value="">
+ <input type="submit" name="" value="Create New Link">
 
-  <input type="submit" name="" value="Create link">
 </form>

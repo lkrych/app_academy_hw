@@ -1,0 +1,15 @@
+<h1>This page was created by <%= @link.user.username %> </h1>
+<h1>Show page for <%= @link.title %> </h1>
+<h2><%= @link.user.username %></h2>
+<h3>Url: <%= @link.url %></h3>
+
+<%= link_to 'Links',links_url  %>
+<%= link_to 'Edit Link',link_url(@link)  %>
+
+<h3>Add Comment</h3>
+<%= render 'comments/new' %>
+
+<% @comments.each do |comment| %>
+  <%= comment.body %>
+  <%= link_to 'Delete', comment_url(comment) %>
+<% end %>

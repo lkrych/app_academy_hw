@@ -10,17 +10,13 @@ class UsersController < ApplicationController
       login!(user)
       redirect_to links_url
     else
-      flash[:errors] = "Please try again, your entry was invalid"
+      flash[:errors] = "Please re-enter your credentials. They were invalid"
       render :new
     end
   end
 
 
   private
-
-  def user?
-  end
-
   def user_params
     params.require(:user).permit(:username, :password)
   end

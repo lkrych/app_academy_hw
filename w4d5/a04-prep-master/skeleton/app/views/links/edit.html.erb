@@ -1,0 +1,13 @@
+<h1> Edit Link</h1>
+<form  action=" <%= link_url %>" method="post">
+  <input type="hidden" name="_method" value="PATCH">
+  <%= auth_token %>
+  <label for="title">Title: </label>
+  <input id= "title" type="text" name="link[title]" value="">
+
+  <label for="url">Url: </label>
+  <input id= "url" type="text" name="link[url]" value="">
+
+  <input type="submit" name="" value="Edit Link">
+
+</form>

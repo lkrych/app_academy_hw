@@ -2,5 +2,6 @@ Links::Application.routes.draw do
   resources :users, only: [:new, :create]
   resource :session, only: [:new, :create, :destroy]
   resources :links, only: [:index, :new, :create, :show, :update]
-  resources :comments, only: [:create, :destroy]
+
+  resources :comments, only: [:new, :create, :show, :destroy]
 end

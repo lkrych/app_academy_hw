@@ -1,20 +1,15 @@
 class Comment < ActiveRecord::Base
   validates :body, :user, :link, presence: true
+  attr_accessor :body
 
-  belongs_to :link
+  belongs_to :link,
+    primary_key: :id,
+    foreign_key: :link_id,
+    class_name: 'Link'
 
-  def body=(body)
-    self.body = body
-  end
+  belongs_to :user,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: 'User'
 
-  def link=(link)
-    self.link = link
-  end
-
-  def user=(user)
-    self.user = user
-  end
-
-  def reflect_on_association
-  end
 end
