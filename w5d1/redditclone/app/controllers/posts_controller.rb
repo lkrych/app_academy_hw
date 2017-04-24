@@ -7,11 +7,11 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = Post.new(post_params)
-    if post.save
-      redirect_to post_url(post)
+    @post = current_user.posts.new(post_params)
+    if @post.save
+      redirect_to post_url(@post)
     else
-      flash[:errors] = "Sorry there was something wrong with your submission, please try again."
+      flash.now[:errors] = "Sorry there was something wrong with your submission, please try again."
       render :new
     end
   end
@@ -25,11 +25,11 @@ class PostsController < ApplicationController
   end
 
   def update
-    post = current_user.posts.find(params[:id])
-    if post.update_attributes(post_params)
-      redirect_to post_url(post)
+    @post = Post.find(params[:id])
+    if @post.update_attributes(post_params)
+      redirect_to post_url(@post)
     else
-      flash[:errors] = "Sorry there was something wrong with your submission, please try again."
+      flash.now[:errors] = "Sorry there was something wrong with your submission, please try again."
       render :edit
     end
   end

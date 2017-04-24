@@ -11,10 +11,10 @@
 
   <label for="content">Content: </label>
 
-  <textarea id="content" name="name" rows="3" cols="30"  name="post[content]" ></textarea>
+  <textarea id="content" rows="3" cols="30"  name="post[content]" ></textarea>
 
   <br></br>
-   <% @subs.each do |s| %>
+   <% Sub.all.each do |s| %>
    <label for="checkbox"><%= s.title  %></label>
     <input id="checkbox" type="checkbox" name="post[sub_ids][]" value= "<%= s.id %>">
   <% end %>

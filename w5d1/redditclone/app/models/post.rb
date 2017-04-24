@@ -1,10 +1,13 @@
 class Post < ActiveRecord::Base
-  validates :title, :sub, :author, presence: true
+  validates :title, :author, presence: true
+  validates :subs, presence: {message: "must have at least one sub"}
 
   has_many :postsubs,
     primary_key: :id,
     foreign_key: :post_id,
-    class_name: 'Postsub'
+    class_name: 'Postsub',
+    inverse_of: :post,
+    dependent: :destroy
 
   has_many :subs,
     through: :postsubs,

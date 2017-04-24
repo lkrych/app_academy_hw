@@ -9,10 +9,13 @@ class Sub < ActiveRecord::Base
   has_many :postsubs,
     primary_key: :id,
     foreign_key: :sub_id,
-    class_name: 'Postsub'
+    class_name: 'Postsub',
+    inverse_of: :sub,
+    dependent: :destroy
 
   has_many :posts,
     through: :postsubs,
     source: :post
+
 
 end
