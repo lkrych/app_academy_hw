@@ -1,6 +1,5 @@
 <%= current_user.username %>
-
-<% @links.each do |link| %>
+<%= @links.each do |link| %>
   <%= link_to link.title, link_url(link) %> : <%= link.url %>
 <% end %>
 
