@@ -27,7 +27,7 @@
 	color: $dark-gray;
 }
 
-.language-nav:first-child{
+.language-nav:nth-child(1){
 	font-weight: bold;
 }
 
@@ -54,6 +54,7 @@
 
 .masthead-links li {
 	margin-left: 10px;
+	padding-right: 10px;
 	border-right: 1px solid $light-gray;
 }
 
@@ -67,6 +68,9 @@
 
 .masthead-links button:hover {
 	background-color: $lightest-gray;
+}
+.masthead-links a:hover {
+	text-decoration: underline;
 }
 
 .masthead-links a,
