@@ -1,0 +1,40 @@
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  align-items: center;
+  border-bottom: 1px solid $light-gray;
+}
+
+.left-nav > ul,
+.right-nav > ul {
+  display: flex;
+}
+
+.left-nav > ul > li {
+  margin: 20px;
+
+}
+
+.right-nav > ul > li {
+  margin: 5px;
+}
+
+.right-nav > ul > li:last-of-type {
+
+}
+
+.left-nav > ul > li:hover,
+.right-nav > ul > li:last-of-type:hover {
+  color: $gray;
+}
+
+.left-nav span {
+  margin: 10px;
+}
+
+
+.right-nav i {
+  font-size: 16px;
+  align-items: center;
+}
