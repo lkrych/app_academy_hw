@@ -1,0 +1,37 @@
+ul {
+  width: 600px;
+  height: 600px;
+}
+
+li {
+  outline: 10px solid black;
+  width: 180px;
+  height: 180px;
+  float: left;
+  /*transition: outline 0.5s, background-color 0.5s;*/
+  background-color: gray;
+  list-style: none;
+  padding: 1px;
+}
+
+h1 {
+  text-align: center;
+}
+
+li:hover {
+  background-color: yellow;
+}
+
+.marked {
+  background-color: white;
+}
+
+span {
+  display: block;
+  margin-top: 20px;
+  margin-right: 5px;
+  font-size: 100px;
+  font-weight: bold;
+  text-align: center;
+  font-family: monospace;
+}

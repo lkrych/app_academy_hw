@@ -1,0 +1,56 @@
+ul {
+  float: left;
+  border-bottom: 20px solid black;
+  margin: 50px;
+  width: 100px;
+  height: 80px;
+  padding: 0;
+  position: relative;
+}
+
+ul:hover {
+  border-bottom: 20px solid blue;
+}
+
+li {
+  margin-bottom: 10px;
+  background-color: gray;
+  list-style: none;
+  height: 20px;
+  width: 10px;
+  display: inline-block;
+  border-radius: 10px;
+  position: absolute;
+}
+
+.size-0{
+  width: 20px;
+  margin: 0 40px;
+  bottom: 50px;
+}
+
+.size-1{
+  width: 50px;
+  margin: 0 25px;
+  bottom: 25px;
+}
+
+.size-2{
+  width: 80px;
+  margin: 0 10px;
+  bottom: 0;
+}
+
+ul.selected {
+  border-bottom: 20px solid green;
+}
+
+.enlightenment {
+  background: url("../enlightenment.jpg")
+}
+
+.color_of_enlightenment {
+  color: blue;
+}
+
+git filter-branch -f --env-filter "GIT_AUTHOR_NAME='Audrey Mefford'; GIT_AUTHOR_EMAIL='acmefford@gmail.com'; GIT_COMMITTER_NAME='Audrey Mefford'; GIT_COMMITTER_EMAIL='acmefford@gmail.com';" HEAD
