@@ -1,3 +1,3 @@
 class Bench < ApplicationRecord
-  validates :title, :lat, :lon, presence: true
+  validates :description, :lat, :lon, presence: true
 end
