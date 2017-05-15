@@ -42,21 +42,26 @@ class SessionForm extends React.Component {
         <ul>
           {errors}
         </ul>
-        <label> Username:
-          <input type='text'
-            onChange={this.onInput('username')}
-            value={this.state.username}>
-          </input>
-        </label>
+        <div className="form-group">
+          <label> Username:
+            <input type='text'
+              className="form-control"
+              onChange={this.onInput('username')}
+              value={this.state.username}>
+            </input>
+          </label>
+        </div>
+        <div className="form-group">
+          <label> Password:
+            <input type='password'
+              className="form-control"
+              onChange={this.onInput('password')}
+              value={this.state.password}>
+            </input>
+          </label>
+        </div>
 
-        <label> Password:
-          <input type='password'
-            onChange={this.onInput('password')}
-            value={this.state.password}>
-          </input>
-        </label>
-
-        <button>{thisRouteText}</button>
+        <button className="btn btn-primary">{thisRouteText}</button>
       </form>
     );
   }
