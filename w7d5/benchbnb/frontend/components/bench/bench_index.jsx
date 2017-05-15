@@ -13,7 +13,7 @@ class BenchIndex extends React.Component {
 
   render(){
     const benches = this.props.benches.map(bench => (
-      <BenchIndexItem bench={bench} />
+      <BenchIndexItem key={bench.id} bench={bench} />
     ));
     return(
       <table className="table">
@@ -31,3 +31,4 @@ class BenchIndex extends React.Component {
     );
   }
 }
+export default BenchIndex;

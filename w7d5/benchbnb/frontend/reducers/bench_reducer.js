@@ -13,3 +13,5 @@ const benchReducer = (state = {},action) => {
       return state;
   }
 };
+
+export default benchReducer;
