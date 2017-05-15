@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 
 import Root from './components/root';
-
-import * as SessionActions from './actions/session_actions';
+import * as APIUtil from './util/bench_api_util';
 
 let store;
 document.addEventListener('DOMContentLoaded', () => {
@@ -17,3 +16,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   ReactDOM.render( <Root store={store} />,document.getElementById('root'));
 });
+
+window.APIUtil = APIUtil;
