@@ -6,7 +6,14 @@ import Root from './components/root';
 
 import * as SessionActions from './actions/session_actions';
 
+let store;
 document.addEventListener('DOMContentLoaded', () => {
-  let store = configureStore();
+  if(window.currentUser){
+    let preloadedState = { session: { currentUser: window.currentUser } };
+    store = configureStore(preloadedState);
+    delete window.currentUser;
+  } else{
+    store = configureStore();
+  }
   ReactDOM.render( <Root store={store} />,document.getElementById('root'));
 });
