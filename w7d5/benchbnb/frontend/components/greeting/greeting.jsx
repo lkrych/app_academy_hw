@@ -7,7 +7,7 @@ const Greeting = ({ session, logout }) => {
     greeting = (
       <section>
         <p>Come take a seat, {session.currentUser.username}! It will be our treat.</p>
-        <button onClick={logout}>Log out</button>
+        <button onClick={logout} className ="btn btn-default">Log out</button>
       </section>
     );
   } else {
